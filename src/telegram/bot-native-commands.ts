@@ -109,6 +109,8 @@ export const registerTelegramNativeCommands = ({
   ];
 
   if (allCommands.length > 0) {
+    console.log(`[${accountId}] Attempting to register ${allCommands.length} commands (${nativeCommands.length} native + ${customCommands.length} custom)`);
+    console.log(`[${accountId}] Skills: ${skillCommands.length}, Native cmds without skills: ${nativeCommands.length - skillCommands.length}`);
     bot.api.setMyCommands(allCommands).catch((err) => {
       runtime.error?.(danger(`telegram setMyCommands failed: ${String(err)}`));
     });
